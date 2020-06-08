@@ -1,11 +1,19 @@
 let scores = [0, 0];
-let roundScore = 0;
-let activePlayer = 0;
+let roundScore,
+  activePlayer = 0;
 
 let diceImg = document.querySelector(".dice");
 let players = document.querySelectorAll(".player");
 let names = document.querySelectorAll(".name");
 let finalScore = document.getElementById("final");
+
+let numbers = [
+  document.querySelector("#current-0"),
+  document.querySelector("#current-1"),
+  document.querySelector("#total-0"),
+  document.querySelector("#total-1"),
+];
+
 // buttons -----------
 let newGame = document.querySelector(".new");
 let roll = document.querySelector(".roll");
@@ -15,7 +23,7 @@ reset();
 
 roll.addEventListener("click", function () {
   let dice = Math.floor(Math.random() * 6) + 1;
-  diceImg.src = "imgs/dice-" + dice + ".png";
+  diceImg.src = `imgs/dice-${dice}.png`;
   diceImg.style.visibility = "visible";
   if (dice != 1) {
     roundScore += dice;
@@ -56,10 +64,9 @@ newGame.addEventListener("click", function () {
 });
 
 function reset() {
-  document.querySelector("#current-0").textContent = "0";
-  document.querySelector("#current-1").textContent = "0";
-  document.querySelector("#total-0").textContent = "0";
-  document.querySelector("#total-1").textContent = "0";
+  for (let num of numbers) {
+    num.textContent = "0";
+  }
   diceImg.style.visibility = "hidden";
   roundScore = 0;
   scores = [0, 0];
@@ -78,19 +85,15 @@ function reset() {
   }
 }
 
-function changeActive() {
+const changeActive = () => {
   document.querySelector("#player-0").classList.toggle("current");
   document.querySelector("#player-1").classList.toggle("current");
-  if (!activePlayer) {
-    activePlayer = 1;
-  } else {
-    activePlayer = 0;
-  }
-}
+  !activePlayer ? (activePlayer = 1) : (activePlayer = 0);
+};
 
-function endGame() {
+const endGame = () => {
   let buttons = document.getElementsByClassName("disable");
   for (var i = 0; i <= 1; i++) {
     buttons[i].disabled = true;
   }
-}
+};
