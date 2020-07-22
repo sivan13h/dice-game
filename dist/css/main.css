@@ -4,7 +4,8 @@
   box-sizing: border-box; }
 
 body {
-  font-family: "lato", sans-serif; }
+  font-family: "lato", sans-serif;
+  padding: 20px; }
 
 ion-icon {
   color: #eb4d4d;
@@ -36,7 +37,7 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)), url(../imgs/back.jpg);
   background-size: cover;
   background-position: center;
@@ -60,30 +61,34 @@ body::before {
 
 .container {
   display: flex;
-  width: 1000px;
-  height: 600px;
-  position: relative;
-  margin: 60px auto;
+  width: 80%;
+  overflow: hidden;
+  position: absolute;
+  height: 90%;
+  left: 10%;
+  margin: auto;
   background-color: white;
   -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.42);
   -moz-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.42);
-  box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.42);
-  overflow: hidden; }
+  box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.42); }
 
 .player {
-  width: 50%; }
+  width: 50%;
+  height: 100%; }
 
 .player-details {
   display: flex;
   flex-direction: column;
-  padding: 120px;
+  padding: 120px 20px;
   align-items: center;
+  height: 100%;
   width: 100%; }
 
 .name {
   font-size: 2.5rem;
   letter-spacing: 0.2rem;
-  font-weight: 200; }
+  font-weight: 200;
+  text-align: center; }
 
 .total-score {
   color: #eb4d4d;
@@ -91,9 +96,10 @@ body::before {
   font-weight: lighter; }
 
 .current-score-box {
+  padding-bottom: 10px;
   background-color: #eb4d4d;
   text-align: center;
-  margin-top: 130px; }
+  margin-top: 180px; }
   .current-score-box h4 {
     font-size: 0.8rem;
     font-weight: 300;
@@ -148,3 +154,27 @@ input::-webkit-outer-spin-button {
 
 input:focus::placeholder {
   color: transparent; }
+
+.rules {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 80%;
+  background-color: red;
+  left: 25%;
+  top: 10%;
+  display: none; }
+
+@media screen and (max-width: 768px) {
+  .player-details .name {
+    font-size: 1.5rem; }
+  .options .dice {
+    margin: 100px 0 50px 0;
+    width: 70px; }
+  .options .roll {
+    margin: 10px 0 20px 0; }
+  .options .option h3 {
+    font-size: 1.1rem; }
+  .current-score-box {
+    position: absolute;
+    bottom: 50px; } }
